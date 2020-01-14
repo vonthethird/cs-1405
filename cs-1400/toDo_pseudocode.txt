@@ -1,0 +1,16 @@
+ToDo Items
+-----------
+1. Hw #3 (importance: 10; deadline Tues, 9:30am)
+2. Eat Lunch (importance: 100; deadline Tues, 12:00pm)
+3. Sleep (importance: 100; deadline Tues, 9:30am)
+4. Watch Netflix (importance: 5; deadline Friday, 11:59pm)
+`
+Which task have you finished (enter1-4)?: 3
+
+ToDo Items
+-----------
+1. Hw #3 (importance: 10; deadline Tues, 9:30am)
+2. Eat Lunch (importance: 100; deadline Tues, 12:00pm)
+3. Sleep (importance: 100; deadline Tues, 9:30am)
+
+Which task have you finished (enter1-3)?: 2
