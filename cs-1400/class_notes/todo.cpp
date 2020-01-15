@@ -13,6 +13,7 @@ int main() {
     // get todo items from user
     string item1Name = "eat lunch";
     bool item1Done = false;
+    char item1Category = 'A';
     float item1Importance = 2.5;
     // minutes since the beginning of the year
     int item1Due = 18 * 24 * 60; // jan 18th midnight
@@ -20,6 +21,7 @@ int main() {
     // second item
     string item2Name = "homework";
     bool item2Done = false;
+    char item2Category = 'B';
     float item2Importance = 4.5;
     int item2Due = 18 * 24 * 60; // jan 18th midnight
     
@@ -28,6 +30,7 @@ int main() {
     cout << "------" << endl;
     cout << "Name: " << item1Name << endl;
     cout << "Importance: " << item1Importance << endl;
+    cout << "Category: " << item1Category << endl;
     cout << "Due: " << item1Due << endl;
     cout << "Done?: " << item1Done << endl;
 
@@ -36,6 +39,7 @@ int main() {
     cout << "------" << endl;
     cout << "Name: " << item2Name << endl;
     cout << "Importance: " << item2Importance << endl;
+    cout << "Category: " << item2Category << endl;
     cout << "Due: " << item2Due << endl;
     cout << "Done?: " << item2Done << endl;
 
