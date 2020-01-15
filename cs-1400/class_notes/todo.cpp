@@ -17,10 +17,27 @@ int main() {
     // minutes since the beginning of the year
     int item1Due = 18 * 24 * 60; // jan 18th midnight
 
+    // second item
+    string item2Name = "homework";
+    bool item2Done = false;
+    float item2Importance = 4.5;
+    int item2Due = 18 * 24 * 60; // jan 18th midnight
+    
+
+    cout << "Item 1" << endl;
+    cout << "------" << endl;
     cout << "Name: " << item1Name << endl;
     cout << "Importance: " << item1Importance << endl;
     cout << "Due: " << item1Due << endl;
     cout << "Done?: " << item1Done << endl;
+
+    cout << endl;
+    cout << "Item 2" << endl;
+    cout << "------" << endl;
+    cout << "Name: " << item2Name << endl;
+    cout << "Importance: " << item2Importance << endl;
+    cout << "Due: " << item2Due << endl;
+    cout << "Done?: " << item2Done << endl;
 
     // allow user to check off todo items
 
