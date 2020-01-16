@@ -1,7 +1,7 @@
 // A simple C++ program
 
 /*
-# is a preprocessor directive, which reads the program before it is compiled. It sets up the source code for the compile.
+# is a preprocessor, which reads the program before it is compiled. It sets up the source code for the compile.
 include is a directive, which causes the preprocessor to include the contents of a header file in the program.
 iostream is the name of the header file.
 <> indicate that iostream is a standard C++ file.
