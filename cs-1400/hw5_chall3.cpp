@@ -4,3 +4,12 @@
 using namespace std;
 
 int subTotal = 95;
+float stateTaxPer = 0.04;
+float countyTaxPer = 0.02;
+
+int main() {
+    float stateTaxPrice = subTotal * stateTaxPer;
+    float countyTaxPrice = subTotal * countyTaxPer;
+    float total = subTotal + stateTaxPrice + countyTaxPrice;
+    cout << "The total price of your purchase is " << total << endl;
+}
