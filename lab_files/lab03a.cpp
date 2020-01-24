@@ -3,9 +3,8 @@
 #include <iostream>
 using namespace std;
 
-int gallons, miles;
-
 int main() {
+    int gallons, miles;
     // user greeting
     cout << "I will calculate your car's mileage based off of the number gallons and miles traveled that you give me.\n";
     cout << "Enter the number of gallons your car used on your last trip:\n";

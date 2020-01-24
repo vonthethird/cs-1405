@@ -3,9 +3,8 @@
 #include <iostream>
 using namespace std;
 
-float firstScore, secondScore, thirdScore, fourthScore, fifthScore;
-
 int main() {
+    float firstScore, secondScore, thirdScore, fourthScore, fifthScore;
     // user greeting
     cout << "Give me 5 test scores and I will calculate the average of them.\n\n";
     cout << "1st score:\n";
