@@ -16,5 +16,11 @@ int speed = 20;
 int time = 10;
 int distance = speed * time;
 cout << distance;
+// problem 28
+float force = 172;
+float area = 27.5;
+float pressure = area / force;
+cout << pressure;
+// return boi
 return 0;
 }
