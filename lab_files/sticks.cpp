@@ -1,4 +1,4 @@
-// author: Von Reid, Garrett Record
+// author: Von Reid
 // does a thing
 #include <iostream>
 // I don't care about the std:: stuff--this is way easier
@@ -6,8 +6,9 @@ using namespace std;
 
 int main()
 {
-    int sticksTaken, numSticksLeft = 20, turnsTaken = 0, currentPlayer;
-
+    int sticksTaken, numSticksLeft, turnsTaken = 0, currentPlayer;
+    cout << "How many sticks are you starting with?\n";
+    cin >> numSticksLeft;
     while (numSticksLeft > 0)
     {
         /*
