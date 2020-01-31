@@ -9,6 +9,7 @@ int main()
     int sticksTaken, numSticksLeft, turnsTaken = 0, currentPlayer;
     cout << "How many sticks are you starting with?\n";
     cin >> numSticksLeft;
+
     while (numSticksLeft > 0)
     {
         /*
@@ -18,7 +19,17 @@ int main()
         */
         currentPlayer = (turnsTaken % 2) + 1;
         cout << "Player " << currentPlayer << ", how many sticks would you like to take?\n";
+        cout << "(please only take 1, 2, or 3)\n";
         cin >> sticksTaken;
+        // I had to wrap the if statement inside of the while because it wouldn't continuously loop through the if statement if you kept entering a number > 3
+        while (sticksTaken > 3)
+        {
+            if (sticksTaken > 3)
+            {
+                cout << "\n***REEEEEE YOU STUPID IDIOT!!! YOU ENTERED IN " << sticksTaken << " STICKS!***\n>>>>>You must only enter 1, 2, or 3 sticks.<<<<<\n***If you violate this rule again, you will be hunted down by Jeff Bezos and he will sell you on Amazon.***\n\nPlayer " << currentPlayer << ", how many sticks would you like to take?\n";
+                cin >> sticksTaken;
+            }
+        }
         numSticksLeft = numSticksLeft - sticksTaken;
 
         if (numSticksLeft > 0)
