@@ -18,23 +18,20 @@ int main()
         i.e. if turnsTaken == 3, currentPlayer == 2
         */
         currentPlayer = (turnsTaken % 2) + 1;
-        cout << "Player " << currentPlayer << ", how many sticks would you like to take?\n";
+        cout << "\nPlayer " << currentPlayer << ", how many sticks would you like to take?\n";
         cout << "(please only take 1, 2, or 3)\n";
         cin >> sticksTaken;
-        // I had to wrap the if statement inside of the while because it wouldn't continuously loop through the if statement if you kept entering a number > 3
-        while (sticksTaken > 3)
+        // prevents user(s) from entering more than 3 sticks
+        while (0 > sticksTaken > 3)
         {
-            if (sticksTaken > 3)
-            {
-                cout << "\n***REEEEEE YOU STUPID IDIOT!!! YOU ENTERED IN " << sticksTaken << " STICKS!***\n>>>>>You must only enter 1, 2, or 3 sticks.<<<<<\n***If you violate this rule again, you will be hunted down by Jeff Bezos and he will sell you on Amazon.***\n\nPlayer " << currentPlayer << ", how many sticks would you like to take?\n";
-                cin >> sticksTaken;
-            }
+            cout << "\n***REEEEEE YOU STUPID IDIOT!!! YOU ENTERED IN " << sticksTaken << " STICKS!***\n>>>>>You must only enter 1, 2, or 3 sticks.<<<<<\n***If you violate this rule again, you will be hunted down by Jeff Bezos and he will sell you on Amazon.***\n\nPlayer " << currentPlayer << ", how many sticks would you like to take?\n";
+            cin >> sticksTaken;
         }
         numSticksLeft = numSticksLeft - sticksTaken;
 
         if (numSticksLeft > 0)
         {
-            cout << "Sticks left: " << numSticksLeft << endl;
+            cout << "\nSticks left: " << numSticksLeft << endl;
         }
         // increment the number of turns taken so currentPlayer can have a correct value
         turnsTaken++;
@@ -42,7 +39,7 @@ int main()
 
     // the last person to take sticks is the loser, so the winner's Player number is the opposite of currentPlayer
     int winner = currentPlayer % 2 + 1;
-    cout << "Player " << winner << " won!\n";
+    cout << "\nPlayer " << winner << " won!\n";
 
     return 0;
 }
