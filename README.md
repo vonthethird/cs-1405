@@ -32,7 +32,7 @@ I created this repo for a _few_ reasons:
 
 ## Useful Info
 
-#### If you're a former colleague, potential employer, or a random bystander:
+#### If you're a former colleague, potential employer, or random bystander:
 Welcome. You may think that the code in this repo is on a very novice level, which is _correct_. You may have even seen me do more advanced stuff than this before, so why am I reverting to the very basic fundamentals of programming? Mostly just because I didn't know anything about C++ when I first came to Snow College, so I feel like it's best for me to start at the very bottom and learn everything correctly in a methodical process, rather than skipping ahead to the next CS class without a good understanding of how C++ works, since that's what they teach here for at least the first few [CS classes](https://www.snow.edu/academics/science_math/engineering/cs/courses.html). So you'll cringe at some of this gross code, I can promise that. But you'll also see some progress in my coding skills, which is the most important part of this repo.
 
 #### If you're one of my fellow CS-1400/1405 classmates:
