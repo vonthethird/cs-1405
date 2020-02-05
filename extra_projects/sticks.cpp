@@ -1,5 +1,8 @@
-// author: Von Reid
-// this is a game of sticks, where players select 1-3 and the player who picks the last one loses.
+/* you may wonder why this file exists in ~/extra_projects AND in ~/lab_files
+this is because I added functionality for players to enter in names, which was a lot of extra work. check it out yo
+
+author: Von Reid
+this is a game of sticks, where players select 1-3 and the player who picks the last one loses. */
 #include <iostream>
 using namespace std;
 
