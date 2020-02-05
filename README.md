@@ -1,12 +1,12 @@
 # cs-1405
-C++ repo for the Programming Fundamentals classes \
+This is my personal C++ repo for the Programming Fundamentals classes. \
 [CS-1400](https://www.snow.edu/academics/science_math/engineering/cs/course.html?crse_numb=1400&subj_code=CS) is the lecture class, [CS-1405](https://www.snow.edu/academics/science_math/engineering/cs/course.html?crse_numb=1405&subj_code=CS) is the lab class.
 
 ## Intro
 
 ### Common Questions
 - **Why is the [CS-1400 folder](https://github.com/vonthethird/cs-1405/tree/master/cs-1400) _inside_ of the [CS-1405 folder](https://github.com/vonthethird/cs-1405)?** \
-In **1400**, we mostly have **discussions and lectures** about coding and C++, while in **1405** we actually **write programs** in C++ and submit those files for the majority of the credit in that class. So this repo is _mostly_ dedicated to 1405, but I also keep files for 1400 notes (and occasional programs) in the repo. Sue me. :cold_sweat: \
+In **1400**, we mostly have **discussions and lectures** about coding and C++, while in **1405** we actually **write programs** in C++ and submit those files for the majority of the credit in that class. So this repo is _mostly_ dedicated to 1405, but I also keep files for 1400 notes (and occasional programs) in the repo. Sue me. :cold_sweat:
 - **Why am I using C++?** \
 While C++ is pretty much outdated and almost a _dead language_ at this point in time, it's the language they teach for the earlier programming classes at Snow College, so that's why I'm using it. _#sorrynotsorry_ :information_desk_person:
 
@@ -17,7 +17,7 @@ At the time of creating this repo, this is my programming experience:
 - I've pretty much mastered writing/reading JSON files and applying them to JS programs
 - I have a good understanding of how to use Unix shells and even write bash files
 - Started up the very basic foundations of a [Selenium WebDriver](https://selenium.dev/documentation/en/webdriver/) automated testing application in Python, but abandoned it due to other priorities at Trapeze Labs
-- Now I'm in the Programming Fundamentals class at [Snow College](https://www.snow.edu/news/snow-college-ranked-number-one-in-the-nation.html) to have a formal education about how to be a programmer and learn C++ to discipline my programming skills by learning the raw foundations of how code works.
+- Now I'm in the Programming Fundamentals class at [Snow College](https://www.snow.edu/news/snow-college-ranked-number-one-in-the-nation.html) to have a formal education about how to be a programmer and learn C++ to discipline my programming skills by learning the raw foundations of how code works. I'm majoring in Software Engineering.
 
 I created this repo for a _few_ reasons:
 1. Keep track of my CS-1405 lab files, CS-1400 notes, and anything else involved with this class.
@@ -34,7 +34,7 @@ Welcome. You may think that the code in this repo is on a very novice level, whi
 Odds are, you don't know how to set up GitHub, which is totally understandable due to the nature of this beginner-level class. \
 Use [this guide](https://help.github.com/en/github/getting-started-with-github) to get started on GitHub.
 Then, after you've made an account, use [this guide](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh) to connect GitHub to your computer, so you can easily access my repo and update it whenever I push updates. \
-**If you're having trouble with _any_ of this**, message me on Canvas or [yeet an email](mailto:vontreid2000@gmail.com) over to me and I will gladly help you set _all_ of this up. I've already done this for a few people in the class, so it's no big deal. \
+**If you're having trouble with _any_ of this**, message me on Canvas or [yeet an email](mailto:vontreid2000@gmail.com) over to me and I will gladly help you set _all_ of this up. I've already done this for a few people in the class, so it's no big deal.
 
 After you've connected GitHub to your computer with the SSH key, clone _(download)_ my repo with these steps:
 1. Create a folder called `git` somewhere, you probably want it in either your top-level directory or in your Desktop folder (I actually keep mine in my Dropbox folder so I always have a backup because I'm a paranoid boi).https://www.snow.edu/
