@@ -42,7 +42,7 @@ Then, after you've made an account, use [this guide](https://help.github.com/en/
 **If you're having trouble with _any_ of this**, message me on Canvas or [yeet an email](mailto:vontreid2000@gmail.com) over to me and I will gladly help you set _all_ of this up. I've already done this for a few people in the class, so it's no big deal.
 
 After you've connected GitHub to your computer with the SSH key, clone _(download)_ my repo with these steps:
-1. Create a folder called `git` somewhere, you probably want it in either your top-level directory or in your Desktop folder (I actually keep mine in my Dropbox folder so I always have a backup because I'm a paranoid boi).https://www.snow.edu/
+1. Create a folder called `git` somewhere, you probably want it in either your top-level directory or in your Desktop folder (I actually keep mine in my Dropbox folder so I always have a backup because I'm a paranoid boi).
 If you have a Mac, I'm so sorry. This will most likely be a pain in the ass for you to do, because Apple hates nice things. :apple::hocho::peach::scream:
 2. Open a terminal _(Command Prompt on Windows)_ and navigate to your `git` folder with `cd`. \
 Then, once your command line directory has `/git` at the end of it, paste in this: \
