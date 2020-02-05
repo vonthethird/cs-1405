@@ -1,6 +1,11 @@
+[Intro](https://github.com/vonthethird/cs-1405#intro) \
+[Useful Info](https://github.com/vonthethird/cs-1405#useful-info)
+
 # cs-1405
 This is my personal C++ repo for the Programming Fundamentals classes. \
-[CS-1400](https://www.snow.edu/academics/science_math/engineering/cs/course.html?crse_numb=1400&subj_code=CS) is the lecture class, [CS-1405](https://www.snow.edu/academics/science_math/engineering/cs/course.html?crse_numb=1405&subj_code=CS) is the lab class.
+[CS-1400](https://www.snow.edu/academics/science_math/engineering/cs/course.html?crse_numb=1400&subj_code=CS) is the lecture class, [CS-1405](https://www.snow.edu/academics/science_math/engineering/cs/course.html?crse_numb=1405&subj_code=CS) is the lab class. \
+**If you're one of my programming classmates, [click here](https://github.com/vonthethird/cs-1405#if-youre-one-of-my-fellow-cs-14001405-classmates).**
+
 
 ## Intro
 
