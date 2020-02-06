@@ -4,22 +4,13 @@ This is a game that involves moving directions in a place with multiple rooms.
 My in-class group got the Southwest room, which is why you can only move North and East.
 */
 #include <iostream>
-#include <chrono>
-#include <thread>
 #include <limits>
+
+#include <chrono> // <chrono> and <thread> are required for the time-pausing stuff in waitBoi()
+#include <thread>
 
 using std::cin;
 using std::cout;
-
-/*int pressEnter()
-{
-    cout << "Press the ENTER key";
-    if (cin.std::istream::get() == '\n')
-        cout << "Good job.\n";
-    else
-        cout << "I meant ONLY the ENTER key... Oh well.\n";
-    return 0;
-}*/
 
 char promptAnswer;
 int roomNumber, sleepCounter = 0, travelCounter = 0;
