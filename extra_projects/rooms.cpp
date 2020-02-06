@@ -21,6 +21,15 @@ int changeRoom()
     return 0;
 }
 
+int invalidPromptCheck()
+{
+    while ((promptAnswer != 'a') && (promptAnswer != 'b') && (promptAnswer != 'c'))
+    {
+        cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
+        cin >> promptAnswer;
+    }
+}
+
 int waitBoi()
 {
     std::chrono::seconds dura(1);
@@ -68,11 +77,7 @@ int roomOne()
          << "b) Move East\n"
          << "c) Go to sleep\n";
     cin >> promptAnswer;
-    while ((promptAnswer != 'a') && (promptAnswer != 'b') && (promptAnswer != 'c'))
-    {
-        cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
-        cin >> promptAnswer;
-    }
+    invalidPromptCheck();
     switch (promptAnswer)
     {
     case 'a':
@@ -100,11 +105,7 @@ int roomTwo()
          << "b) Move East\n"
          << "c) Go to sleep\n";
     cin >> promptAnswer;
-    while ((promptAnswer != 'a') && (promptAnswer != 'b') && (promptAnswer != 'c'))
-    {
-        cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
-        cin >> promptAnswer;
-    }
+    invalidPromptCheck();
     switch (promptAnswer)
     {
     case 'a':
@@ -132,11 +133,7 @@ int roomThree()
          << "b) Move West\n"
          << "c) Go to sleep\n";
     cin >> promptAnswer;
-    while ((promptAnswer != 'a') && (promptAnswer != 'b') && (promptAnswer != 'c'))
-    {
-        cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
-        cin >> promptAnswer;
-    }
+    invalidPromptCheck();
     switch (promptAnswer)
     {
     case 'a':
@@ -164,11 +161,7 @@ int roomFour()
          << "b) Move West\n"
          << "c) Go to sleep\n";
     cin >> promptAnswer;
-    while ((promptAnswer != 'a') && (promptAnswer != 'b') && (promptAnswer != 'c'))
-    {
-        cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
-        cin >> promptAnswer;
-    }
+    invalidPromptCheck();
     switch (promptAnswer)
     {
     case 'a':
