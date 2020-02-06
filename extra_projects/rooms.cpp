@@ -22,7 +22,13 @@ using std::cout;
 }*/
 
 char promptAnswer;
-int roomNumber;
+int roomNumber, sleepCounter = 0, travelCounter = 0;
+
+int changeRoom()
+{
+    cout << "\nYou are now in room " << roomNumber << ".\n\n";
+    return 0;
+}
 
 int waitBoi()
 {
@@ -64,7 +70,7 @@ int optionC()
     return 0;
 }
 
-int roomOneQuestions()
+int roomOne()
 {
     cout << "There are 3 choices you can make.\nEnter 1 letter (a, b, or c) to choose:\n";
     cout << "a) Move South\n"
@@ -76,25 +82,28 @@ int roomOneQuestions()
         cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
         cin >> promptAnswer;
     }
-    /*if (promptAnswer == 'a')
+    if (promptAnswer == 'a')
     {
         cout << "\nYou moved South.\n";
-        cout << "\nYou are now in room 2.\n\n";
-        //roomTwoQuestions();
+        roomNumber = 2, travelCounter++;
+        changeRoom();
     }
     else if (promptAnswer == 'b')
     {
         cout << "\nYou moved East.\n";
+        roomNumber = 4, travelCounter++;
+        changeRoom();
     }
     else if (promptAnswer == 'c')
     {
         optionC();
-        roomOneQuestions();
-    }*/
+
+        roomNumber = 1, sleepCounter++;
+    }
     return 0;
 }
 
-int roomTwoQuestions()
+int roomTwo()
 {
     cout << "There are 3 choices you can make.\nEnter 1 letter (a, b, or c) to choose:\n";
     cout << "a) Move North\n"
@@ -106,19 +115,90 @@ int roomTwoQuestions()
         cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
         cin >> promptAnswer;
     }
-    /*if (promptAnswer == 'a')
+    if (promptAnswer == 'a')
     {
         cout << "\nYou moved North.\n";
+        roomNumber = 1, travelCounter++;
+        changeRoom();
     }
     else if (promptAnswer == 'b')
     {
-        cout << "\nYou moved East.\n";
+        cout << "\nYou tried moving East, but there turns out to be no door.\n";
+        cout << "What will you do now?\n";
+        roomNumber = 2;
     }
     else if (promptAnswer == 'c')
     {
         optionC();
-        roomTwoQuestions();
-    }*/
+
+        roomNumber = 2, sleepCounter++;
+    }
+    return 0;
+}
+
+int roomThree()
+{
+    cout << "There are 3 choices you can make.\nEnter 1 letter (a, b, or c) to choose:\n";
+    cout << "a) Move North\n"
+         << "b) Move West\n"
+         << "c) Go to sleep\n";
+    cin >> promptAnswer;
+    while ((promptAnswer != 'a') && (promptAnswer != 'b') && (promptAnswer != 'c'))
+    {
+        cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
+        cin >> promptAnswer;
+    }
+    if (promptAnswer == 'a')
+    {
+        cout << "\nYou moved North.\n";
+        roomNumber = 4, travelCounter++;
+        changeRoom();
+    }
+    else if (promptAnswer == 'b')
+    {
+        cout << "\nYou tried moving West, but there turns out to be no door.\n";
+        cout << "What will you do now?\n";
+        roomNumber = 3;
+    }
+    else if (promptAnswer == 'c')
+    {
+        optionC();
+
+        roomNumber = 3, sleepCounter++;
+    }
+    return 0;
+}
+
+int roomFour()
+{
+    cout << "There are 3 choices you can make.\nEnter 1 letter (a, b, or c) to choose:\n";
+    cout << "a) Move South\n"
+         << "b) Move West\n"
+         << "c) Go to sleep\n";
+    cin >> promptAnswer;
+    while ((promptAnswer != 'a') && (promptAnswer != 'b') && (promptAnswer != 'c'))
+    {
+        cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
+        cin >> promptAnswer;
+    }
+    if (promptAnswer == 'a')
+    {
+        cout << "\nYou moved South.\n";
+        roomNumber = 3, travelCounter++;
+        changeRoom();
+    }
+    else if (promptAnswer == 'b')
+    {
+        cout << "\nYou moved West.\n";
+        roomNumber = 1, travelCounter++;
+        changeRoom();
+    }
+    else if (promptAnswer == 'c')
+    {
+        optionC();
+
+        roomNumber = 4, sleepCounter++;
+    }
     return 0;
 }
 
@@ -131,56 +211,37 @@ int pickRoom()
         cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
         cin >> roomNumber;
     }
-    switch (roomNumber)
-    {
-    case 1:
-        cout << "\nYou are now in room 1.\n\n";
-        break;
-    case 2:
-        cout << "\nYou are now in room 2.\n\n";
-        roomTwoQuestions();
-        break;
-    case 3:
-        cout << "\nYou are now in room 3.\n\n";
-        break;
-    case 4:
-        cout << "\nYou are now in room 4.\n\n";
-        break;
-    }
     return 0;
-}
-
-int roomOneChoices()
-{
-    if (promptAnswer == 'a')
-    {
-        cout << "\nYou moved South.\n";
-        cout << "\nYou are now in room 2.\n\n";
-        roomNumber == 2;
-        roomTwoQuestions();
-    }
-    else if (promptAnswer == 'b')
-    {
-        cout << "\nYou moved East.\n";
-    }
-    else if (promptAnswer == 'c')
-    {
-        optionC();
-        roomOneQuestions();
-    }
 }
 
 int main()
 {
     cout << "Hello, welcome to the game!\nYou may or may not survive this, so be careful.\n\n";
     pickRoom();
+    cin.clear();
     while (roomNumber < 5)
     {
-        while (roomNumber == 1)
+        switch (roomNumber)
         {
-            roomOneQuestions();
-            roomOneChoices();
+        case 1:
+            roomOne();
+            break;
+        case 2:
+            roomTwo();
+            break;
+        case 3:
+            roomThree();
+            break;
+        case 4:
+            roomFour();
+            break;
+        }
+        if (sleepCounter > 6 && travelCounter > 5)
+        {
+            roomNumber = 5;
         }
     }
+    cout << "\n\n***Suddenly, you woke up and realized it was all a dream.***\nThere are no rooms, and there are no doors.\nThis was simply a figment of your imagination.\nBut hey, at least you finally escaped! (for now.....)\n\n";
+    cout << "You slept " << sleepCounter << " times, and you went to a different room " << travelCounter << " times.\nYou were quite determined to escape. I'll have to find better ways to trick you next time...\n\n";
     return 0;
 }
