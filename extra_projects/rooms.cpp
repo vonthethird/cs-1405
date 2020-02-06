@@ -73,23 +73,22 @@ int roomOne()
         cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
         cin >> promptAnswer;
     }
-    if (promptAnswer == 'a')
+    switch (promptAnswer)
     {
+    case 'a':
         cout << "\nYou moved South.\n";
         roomNumber = 2, travelCounter++;
         changeRoom();
-    }
-    else if (promptAnswer == 'b')
-    {
+        break;
+    case 'b':
         cout << "\nYou moved East.\n";
         roomNumber = 4, travelCounter++;
         changeRoom();
-    }
-    else if (promptAnswer == 'c')
-    {
+        break;
+    case 'c':
         optionC();
-
         roomNumber = 1, sleepCounter++;
+        break;
     }
     return 0;
 }
@@ -106,23 +105,22 @@ int roomTwo()
         cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
         cin >> promptAnswer;
     }
-    if (promptAnswer == 'a')
+    switch (promptAnswer)
     {
+    case 'a':
         cout << "\nYou moved North.\n";
         roomNumber = 1, travelCounter++;
         changeRoom();
-    }
-    else if (promptAnswer == 'b')
-    {
+        break;
+    case 'b':
         cout << "\nYou tried moving East, but there turns out to be no door.\n";
         cout << "What will you do now?\n";
         roomNumber = 2;
-    }
-    else if (promptAnswer == 'c')
-    {
+        break;
+    case 'c':
         optionC();
-
         roomNumber = 2, sleepCounter++;
+        break;
     }
     return 0;
 }
@@ -139,23 +137,22 @@ int roomThree()
         cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
         cin >> promptAnswer;
     }
-    if (promptAnswer == 'a')
+    switch (promptAnswer)
     {
+    case 'a':
         cout << "\nYou moved North.\n";
         roomNumber = 4, travelCounter++;
         changeRoom();
-    }
-    else if (promptAnswer == 'b')
-    {
+        break;
+    case 'b':
         cout << "\nYou tried moving West, but there turns out to be no door.\n";
         cout << "What will you do now?\n";
         roomNumber = 3;
-    }
-    else if (promptAnswer == 'c')
-    {
+        break;
+    case 'c':
         optionC();
-
         roomNumber = 3, sleepCounter++;
+        break;
     }
     return 0;
 }
@@ -172,23 +169,22 @@ int roomFour()
         cout << "\nYou dumb, stupid, incompetent idiot.\nThat's not a valid option. Try again.\n";
         cin >> promptAnswer;
     }
-    if (promptAnswer == 'a')
+    switch (promptAnswer)
     {
+    case 'a':
         cout << "\nYou moved South.\n";
         roomNumber = 3, travelCounter++;
         changeRoom();
-    }
-    else if (promptAnswer == 'b')
-    {
+        break;
+    case 'b':
         cout << "\nYou moved West.\n";
         roomNumber = 1, travelCounter++;
         changeRoom();
-    }
-    else if (promptAnswer == 'c')
-    {
+        break;
+    case 'c':
         optionC();
-
         roomNumber = 4, sleepCounter++;
+        break;
     }
     return 0;
 }
