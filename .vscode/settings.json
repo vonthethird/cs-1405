@@ -3,5 +3,6 @@
         "iostream": "cpp",
         "limits": "cpp",
         "iomanip": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Enabled"
 }
