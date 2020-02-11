@@ -1,5 +1,11 @@
-// author: Von Reid
-// does a thing (I'll fill this out later)
+/* 
+author: Von Reid
+We had to write 3 programs for the Lab #5 assignment.
+Pick 1 of them:
+1) Calculates 3 trig functions from the degrees of an angle you enter, then it generates a random number and runs it through some calculations.
+2) Determines the tax rate for an income you enter (based on a table of tax rate constants from the lab program).
+3) Outputs a certain food based on a letter the user inputs.
+*/
 
 #include <iostream>
 #include <cmath>
@@ -15,6 +21,7 @@ int programNumber;
 string programName;
 char exitChar;
 
+// this function allows you to either exit or repeat any of the 3 programs
 int promptExitProgram()
 {
     switch (programNumber)
@@ -36,6 +43,8 @@ int promptExitProgram()
     cout << endl;
 }
 
+// includes the first part of the math program (objective 1.)
+// calculates user-inputted angle(s) with trig functions
 int firstProgramTrig()
 {
     cout << endl
@@ -58,6 +67,8 @@ int firstProgramTrig()
     return 0;
 }
 
+// includes the second part of the math program (objective 1.)
+// uses a randomly-generated number and spits it through a few different math equations
 int firstProgramRand()
 {
     string continueInput;
@@ -119,6 +130,8 @@ int firstProgramRand()
     return 0;
 }
 
+// includes the tax rate program (objective 2.)
+// calculate someone's tax rate based off of a given tax table and a user-inputted income
 int secondProgram()
 {
     cout << endl
@@ -149,6 +162,8 @@ int secondProgram()
     return 0;
 }
 
+// includes the food/fruit program (objective 3.)
+// reveals a fruit based off of a letter (from 3 letter options) that the user inputs
 int thirdProgram()
 {
     char food;
@@ -180,6 +195,7 @@ int thirdProgram()
     return 0;
 }
 
+// runs all 3 programs based off of 1 of the 4 given numbers which the user inputs
 int main()
 {
     int programChoice;
