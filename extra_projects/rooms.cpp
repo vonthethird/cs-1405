@@ -26,7 +26,7 @@ void print(const std::vector<std::string> &picture)
 }
 std::vector<std::string> zeldaASCII =
     {
-        R"(                                    /@)",
+        R"(                                     /@)",
         R"(                     __        __   /\/)",
         R"(                    /==\      /  \_/\/)",
         R"(                  /======\    \/\__ \__)",
