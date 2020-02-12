@@ -1,15 +1,15 @@
-#include <iostream>
 // author: Von Reid
 // this is for the H.W. #15. assignment in class
+#include <iostream>
 
 int main()
 {
 
 int i;
+
 /*  5.
 && makes it so the statement returns true if both statements are true.
 i.e.    */
-
 if (i < 10 && i > 0){} // will only process if i is both greater than 0 and less than 10
 
 
