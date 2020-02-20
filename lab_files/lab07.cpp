@@ -13,10 +13,10 @@ int mileToKm(float);
 
 int main()
 {
-    //isClose();
+    /*isClose();
     inchToCm(4.28);
     yardToM(3.2);
-    mileToKm(8.9);
+    mileToKm(8.9);*/
 
     return 0;
 }
