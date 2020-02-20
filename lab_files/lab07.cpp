@@ -7,10 +7,16 @@ using std::cout;
 using std::endl;
 
 int isClose();
+int inchToCm(float);
+int yardToM(float);
+int mileToKm(float);
 
 int main()
 {
-    isClose();
+    //isClose();
+    inchToCm(4.28);
+    yardToM(3.2);
+    mileToKm(8.9);
 
     return 0;
 }
@@ -44,4 +50,19 @@ int isClose()
     {
         return false;
     }
+}
+
+int inchToCm(float inch)
+{
+    float cm = inch * 2.54;
+}
+
+int yardToM(float yard)
+{
+    float m = yard * 0.9144;
+}
+
+int mileToKm(float mile)
+{
+    float km = mile * 1.60934;
 }
