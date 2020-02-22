@@ -1,33 +1,32 @@
 // author: Von Reid
 
 #include <iostream>
+#include <cassert>
+#include <assert.h>
 
 using std::cin;
 using std::cout;
 using std::endl;
 
-int isClose();
-int inchToCm(float);
-int yardToM(float);
-int mileToKm(float);
+int isClose(double, double);
+int inchToCm(double);
+int yardToM(double);
+int mileToKm(double);
+void testDriver();
+
+double close1 = 4.9999999;
+double close2 = 5;
 
 int main()
 {
-    /*isClose();
-    inchToCm(4.28);
-    yardToM(3.2);
-    mileToKm(8.9);*/
+    testDriver();
 
     return 0;
 }
 
-int isClose()
+int isClose(double num1, double num2)
 {
-    double num1, num2, greaterNum, smallerNum, difference;
-    cout << "Hello, please enter a number, ANY number." << endl;
-    cin >> num1;
-    cout << "Now enter another number." << endl;
-    cin >> num2;
+    double difference, greaterNum, smallerNum;
 
     if (num1 >= num2)
     {
@@ -52,17 +51,32 @@ int isClose()
     }
 }
 
-int inchToCm(float inch)
+int inchToCm(double inch)
 {
-    float cm = inch * 2.54;
+    double const cmConversion = 2.54;
+    double cm = inch * cmConversion;
 }
 
-int yardToM(float yard)
+int yardToM(double yard)
 {
-    float m = yard * 0.9144;
+    double const mConversion = 0.9144;
+    double m = yard * mConversion;
 }
 
-int mileToKm(float mile)
+int mileToKm(double mile)
 {
-    float km = mile * 1.60934;
+    double const kmConversion = 1.609344;
+    double km = mile * kmConversion;
+}
+
+void testDriver()
+{
+    assert(isClose(close1, close2));
+    // this assertion fails, so that tells us that isClose() works properly.
+    // assert(isClose(40000, 5));
+    /* honestly, I have no idea how to do 3b, I started to do this but it's not working like it's supposed to.
+    double cm1 = inchToCm(close1), cm2 = inchToCm(close2), m1 = yardToM(close1), m2 = yardToM(close2), km1 = mileToKm(close1), km2 = mileToKm(close2);
+    assert(isClose(cm1, cm2));
+    assert(isClose(m1, m2));
+    assert(isClose(km1, km2)); */
 }
