@@ -1,8 +1,7 @@
-/*
-author: Von Reid
-this program converts imperial units into metric units.
-it also tests that everything works properly (besides the stuff in main()) with the testDriver() function.
-*/
+// authors: Von Reid and Garrett Record
+
+// this program converts imperial units into metric units.
+// it also tests that everything works properly (besides the stuff in main()) with the testDriver() function.
 
 #include <iostream>
 #include <cassert>
