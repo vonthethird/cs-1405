@@ -11,7 +11,7 @@ using std::string;
 
 // this compares 2 numbers to see if one is almost the exact same number as the other
 // see testDriver() for more info
-int isClose(float, float);
+bool isClose(float, float);
 
 // these 3 functions will convert imperial units to metric units
 float inToCm(float);
@@ -23,7 +23,7 @@ void testDriver();
 
 // this inputs the user's entered imperial unit each time you want to convert a unit
 int floatInp(string);
-float floatOutp(float, string);
+void floatOutp(float, string);
 
 // these variables get used in multiple functions, so they MUST be global #sorrynotsorry
 float usrFloat, cm, m, km;
@@ -51,7 +51,7 @@ int main()
     return 0;
 }
 
-int isClose(float num1, float num2)
+bool isClose(float num1, float num2)
 {
     float difference, greaterNum, smallerNum;
 
@@ -128,7 +128,7 @@ int floatInp(string floatInpPrompt)
     return usrFloat;
 }
 
-float floatOutp(float callFloat, string floatLabel)
+void floatOutp(float callFloat, string floatLabel)
 {
     // displays the value and the unit name
     cout << callFloat << " " << floatLabel << endl;
