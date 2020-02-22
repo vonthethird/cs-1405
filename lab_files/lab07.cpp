@@ -13,6 +13,7 @@ int inchToCm(double);
 int yardToM(double);
 int mileToKm(double);
 void testDriver();
+int floatBoi(float); // wonder why this isn't surrounded by the other int functions? cuz I'm ordering these by the order they come up in the lab, not the data types.
 
 double close1 = 4.9999999;
 double close2 = 5;
@@ -79,4 +80,9 @@ void testDriver()
     assert(isClose(cm1, cm2));
     assert(isClose(m1, m2));
     assert(isClose(km1, km2)); */
+}
+
+int floatBoi(float usrFloat) {
+    cout << "Please enter a number." << endl;
+    cin >> usrFloat;
 }
