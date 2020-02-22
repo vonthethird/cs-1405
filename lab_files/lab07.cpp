@@ -42,7 +42,6 @@ int isClose(double num1, double num2)
     difference = greaterNum - smallerNum;
     if (difference < 1E-4)
     {
-        //figure out what to do with the true/false result after you finish the other problems
         return true;
     }
     else
@@ -74,6 +73,7 @@ void testDriver()
     assert(isClose(close1, close2));
     // this assertion fails, so that tells us that isClose() works properly.
     // assert(isClose(40000, 5));
+
     /* honestly, I have no idea how to do 3b, I started to do this but it's not working like it's supposed to.
     double cm1 = inchToCm(close1), cm2 = inchToCm(close2), m1 = yardToM(close1), m2 = yardToM(close2), km1 = mileToKm(close1), km2 = mileToKm(close2);
     assert(isClose(cm1, cm2));
