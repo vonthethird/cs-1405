@@ -5,7 +5,6 @@
 
 #include <iostream>
 #include <cassert>
-#include <assert.h>
 
 using std::cin;
 using std::cout;
