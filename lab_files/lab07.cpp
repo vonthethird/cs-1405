@@ -10,15 +10,13 @@ using std::endl;
 using std::string;
 
 int isClose(float, float);
-int inToCm(float);
-int ydToM(float);
-int miToKm(float);
+float inToCm(float);
+float ydToM(float);
+float miToKm(float);
 void testDriver();
 int floatInp(string);
 float floatOutp(float, string);
 
-float close1 = 4.9999999;
-float close2 = 5;
 float usrFloat, cm, m, km;
 
 int main()
@@ -66,21 +64,21 @@ int isClose(float num1, float num2)
     }
 }
 
-int inToCm(float in)
+float inToCm(float in)
 {
     float const cmConversion = 2.54;
     cm = in * cmConversion;
     return cm;
 }
 
-int ydToM(float yd)
+float ydToM(float yd)
 {
     float const mConversion = 0.9144;
     m = yd * mConversion;
     return m;
 }
 
-int miToKm(float mi)
+float miToKm(float mi)
 {
     float const kmConversion = 1.609344;
     km = mi * kmConversion;
@@ -89,15 +87,16 @@ int miToKm(float mi)
 
 void testDriver()
 {
-    assert(isClose(close1, close2));
+    assert(isClose(4.9999999, 5));
     // this assertion fails, so that tells us that isClose() works properly.
     // assert(isClose(40000, 5));
 
-    /* honestly, I have no idea how to do 3b, I started to do this but it's not working like it's supposed to.
-    float cm1 = inToCm(close1), cm2 = inToCm(close2), m1 = ydToM(close1), m2 = ydToM(close2), km1 = miToKm(close1), km2 = miToKm(close2);
+    float cm1 = inToCm(2), cm2 = 2 * 2.54;
+    float m1 = ydToM(2), m2 = 2 * 0.9144;
+    float km1 = miToKm(2), km2 = 2 * 1.609344;
     assert(isClose(cm1, cm2));
     assert(isClose(m1, m2));
-    assert(isClose(km1, km2)); */
+    assert(isClose(km1, km2));
 }
 
 int floatInp(string floatInpPrompt)
