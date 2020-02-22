@@ -9,11 +9,19 @@ using std::cout;
 using std::endl;
 using std::string;
 
+// this compares 2 numbers to see if one is almost the exact same number as the other
+// see testDriver() for more info
 int isClose(float, float);
+
+// these 3 functions will convert imperial units to metric units
 float inToCm(float);
 float ydToM(float);
 float miToKm(float);
+
+// this tests the 4 functions above it
 void testDriver();
+
+// this inputs the user's entered imperial unit each time you want to convert a unit
 int floatInp(string);
 float floatOutp(float, string);
 
@@ -88,7 +96,8 @@ float miToKm(float mi)
 void testDriver()
 {
     assert(isClose(4.9999999, 5));
-    // this assertion fails, so that tells us that isClose() works properly.
+    /* this assertion is intended to fail, to test that isClose() returns false when its parameters aren't close together enough.
+    delete the comment slashes below to try it out for yourself. */
     // assert(isClose(40000, 5));
 
     float cm1 = inToCm(2), cm2 = 2 * 2.54;
