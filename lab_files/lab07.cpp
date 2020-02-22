@@ -1,4 +1,8 @@
-// author: Von Reid
+/*
+author: Von Reid
+this program converts imperial units into metric units.
+it also tests that everything works properly (besides the stuff in main()) with the testDriver() function.
+*/
 
 #include <iostream>
 #include <cassert>
@@ -13,7 +17,7 @@ using std::string;
 // see testDriver() for more info
 bool isClose(float, float);
 
-// these 3 functions will convert imperial units to metric units
+// these 3 functions will convert units (as stated on line 2)
 float inToCm(float);
 float ydToM(float);
 float miToKm(float);
