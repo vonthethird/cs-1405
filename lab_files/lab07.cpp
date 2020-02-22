@@ -85,4 +85,5 @@ void testDriver()
 int floatBoi(float usrFloat) {
     cout << "Please enter a number." << endl;
     cin >> usrFloat;
+    return usrFloat;
 }
