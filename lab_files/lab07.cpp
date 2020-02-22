@@ -109,9 +109,8 @@ void testDriver()
     // this tests if those 2 numbers are APPROXIMATELY the same number
     // it should return true, because 4.9999999 is approximately the same number as 5 (because 0.0000001)
     assert(isClose(4.9999999, 5));
-
-    // this assertion is intended to fail, to test that isClose() returns false when its parameters aren't close together enough--delete the comment slashes below to try it out for yourself.
-    // assert(isClose(40000, 5));
+    // this assertion tests that isClose() returns false when its parameters aren't close together enough
+    assert(!(isClose(40000, 5)));
 
     // the [unit]1 and [unit]2 values SHOULD be the exact same numbers, since it's literally the copy-and-pasted math from the unit conversion functions
     float cm1 = inToCm(2), cm2 = 2 * 2.54;
