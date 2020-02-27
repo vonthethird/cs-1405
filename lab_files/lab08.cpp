@@ -10,7 +10,7 @@ using std::string;
 char a = 'a', b = 'b', c = 'c', d = 'd', e = 'e', f = 'f', g = 'g', h = 'h', i = 'i';
 
 // displays the tic-tac-toe board depending on the letter(s) entered
-string displayBoard(char);
+void displayBoard(char, char, char, char, char, char, char, char, char);
 
 // determines who the winner is
 bool hasWinner();
@@ -20,7 +20,7 @@ int main()
     //
 }
 
-string displayBoard()
+void displayBoard(char, char, char, char, char, char, char, char, char)
 {
     cout << "  a | b | c"
          << " ---+---+---"
