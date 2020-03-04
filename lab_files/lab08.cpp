@@ -8,35 +8,43 @@ using std::endl;
 using std::string;
 
 char userCell, userChar, a = 'a', b = 'b', c = 'c', d = 'd', e = 'e', f = 'f', g = 'g', h = 'h', i = 'i';
-int curPlayer = 0;
+char curPlayer = turn % 2 == 0 ? 'X' : 'O';
+const int MAX_TURNS = 9;
 
 // displays the tic-tac-toe board depending on the letter(s) entered
-void displayBoard(char, char, char, char, char, char, char, char, char);
+void displayBoard();
 
 // determines who the winner is based which cells have been entered
 bool hasWinner(char, char, char, char, char, char, char, char, char);
 
 // gathers the user inputs to select cell(s) on the board
-char getInput(int, char, char, char, char, char, char, char, char, char);
+char getInput(char, char, char, char, char, char, char, char, char, char);
 
 int main()
 {
-    //
+    for (int turn = 0; turn < MAX_TURNS; turn++)
+    {
+        cout << endl;
+        cout << "Current Board:" << endl;
+        displayBoard();
+        getInput(curPlayer, a, b, c, d, e, f, g, h, i);
+    }
 }
 
-void displayBoard(char, char, char, char, char, char, char, char, char)
+void displayBoard()
 {
-    cout << "  a | b | c"
-         << " ---+---+---"
-         << "  d | e | f"
-         << " ---+---+--"
-         << "  g | h | i" << endl;
+    cout << " " << a << " | " << b << " | " << c << endl
+         << "---+---+---"
+         << " " << d << " | " << e << " | " << f << endl
+         << "---+---+---"
+         << " " << g << " | " << h << " | " << i << endl
+         << endl;
 }
 
 bool hasWinner(char, char, char, char, char, char, char, char, char)
 {
     bool threeInARow;
-    if ((a && d && g) == 'X' || (b && e && h) == 'X' || (c && f && i) == 'X' || (a && b && c) == 'X' || (d && e && f) == 'X' || (g && h && i) == 'X' || (a && e && i) == 'X' || (c && e && g) == 'X')
+    if ((a && d && g) == userChar || (b && e && h) == userChar || (c && f && i) == userChar || (a && b && c) == userChar || (d && e && f) == userChar || (g && h && i) == userChar || (a && e && i) == userChar || (c && e && g) == userChar)
     {
         threeInARow = true;
     }
@@ -46,7 +54,7 @@ bool hasWinner(char, char, char, char, char, char, char, char, char)
     }
 }
 
-char getInput(int, char, char, char, char, char, char, char, char, char)
+char getInput(char, char, char, char, char, char, char, char, char, char)
 {
     cout << "Player " << curPlayer << ", which cell would you like to enter?" << endl;
     cin >> userCell;
