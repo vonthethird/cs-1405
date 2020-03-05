@@ -72,7 +72,6 @@ bool hasWinner(bool)
 {
     bool threeX = ((a == 'X' && d == 'X' && g == 'X') || (b == 'X' && e == 'X' && h == 'X') || (c == 'X' && f == 'X' && i == 'X') || (a == 'X' && b == 'X' && c == 'X') || (d == 'X' && e == 'X' && f == 'X') || (g == 'X' && h == 'X' && i == 'X') || (a == 'X' && e == 'X' && i == 'X') || (c == 'X' && e == 'X' && g == 'X'));
     bool threeO = ((a == 'O' && d == 'O' && g == 'O') || (b == 'O' && e == 'O' && h == 'O') || (c == 'O' && f == 'O' && i == 'O') || (a == 'O' && b == 'O' && c == 'O') || (d == 'O' && e == 'O' && f == 'O') || (g == 'O' && h == 'O' && i == 'O') || (a == 'O' && e == 'O' && i == 'O') || (c == 'O' && e == 'O' && g == 'O'));
-    //if ((a && d && g) == userChar || (b && e && h) == userChar || (c && f && i) == userChar || (a && b && c) == userChar || (d && e && f) == userChar || (g && h && i) == userChar || (a && e && i) == userChar || (c && e && g) == userChar)
     if (threeX == true)
     {
         threeInARow = true;
@@ -96,7 +95,6 @@ char getInput(char, char, char, char, char, char, char, char, char, char)
     cin >> userCell;
     assignUserChar();
     updateCell();
-    //return userCell;
 }
 
 void updateCell()
