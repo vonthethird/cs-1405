@@ -7,6 +7,7 @@ using std::cout;
 using std::endl;
 using std::string;
 
+int turn;
 char userCell, userChar, a = 'a', b = 'b', c = 'c', d = 'd', e = 'e', f = 'f', g = 'g', h = 'h', i = 'i';
 char curPlayer = turn % 2 == 0 ? 'X' : 'O';
 const int MAX_TURNS = 9;
@@ -58,13 +59,14 @@ char getInput(char, char, char, char, char, char, char, char, char, char)
 {
     cout << "Player " << curPlayer << ", which cell would you like to enter?" << endl;
     cin >> userCell;
-    if (curPlayer == 1)
+    switch (curPlayer)
     {
+    case 1:
         userChar = 'X';
-    }
-    else if (curPlayer == 2)
-    {
+        break;
+    case 2:
         userChar = 'O';
+        break;
     }
     switch (userCell)
     {
