@@ -7,8 +7,8 @@ using std::cout;
 using std::endl;
 using std::string;
 
-int turnsTaken, curPlayer, winPlayer;
-char userCell, userChar, a, b, c, d, e, f, g, h, i;
+int turnsTaken, curPlayer;
+char userCell, userChar, winChar, a, b, c, d, e, f, g, h, i;
 const int MAX_TURNS = 9;
 bool threeInARow;
 // displays the tic-tac-toe board depending on the letter(s) entered
@@ -45,7 +45,7 @@ int main()
         hasWinner(threeInARow);
         if (threeInARow == true)
         {
-            // kills the loop, because you can end the game before turnsTaken == MAX_TURNS
+            // kills the loop, because you can end the game before turnsTaken == MAX_TURNS by filling 3 cells in a row
             break;
         }
     }
@@ -54,7 +54,7 @@ int main()
 
     if (threeInARow == true)
     {
-        cout << "Player " << winPlayer << " won!" << endl;
+        cout << "Player " << winChar << " won!" << endl;
     }
     // only initiates if the users reach a stalemate
     else
@@ -84,12 +84,12 @@ bool hasWinner(bool)
     if (threeX == true)
     {
         threeInARow = true;
-        winPlayer = 1;
+        winChar = 'X';
     }
     else if (threeO == true)
     {
         threeInARow = true;
-        winPlayer = 2;
+        winChar = 'O';
     }
     else
     {
@@ -100,9 +100,9 @@ bool hasWinner(bool)
 
 char getInput(char, char, char, char, char, char, char, char, char, char)
 {
-    cout << "Player " << curPlayer << ", which cell would you like to enter?" << endl;
-    cin >> userCell;
     assignUserChar();
+    cout << "Player " << userChar << ", which cell would you like to enter?" << endl;
+    cin >> userCell;
     updateCell();
 }
 
