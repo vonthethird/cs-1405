@@ -7,11 +7,9 @@ using std::cout;
 using std::endl;
 using std::string;
 
-int turn;
+int turnsTaken, curPlayer;
 char userCell, userChar, a = 'a', b = 'b', c = 'c', d = 'd', e = 'e', f = 'f', g = 'g', h = 'h', i = 'i';
-char curPlayer = turn % 2 == 0 ? 'X' : 'O';
 const int MAX_TURNS = 9;
-
 // displays the tic-tac-toe board depending on the letter(s) entered
 void displayBoard();
 
@@ -23,21 +21,24 @@ char getInput(char, char, char, char, char, char, char, char, char, char);
 
 int main()
 {
-    for (int turn = 0; turn < MAX_TURNS; turn++)
+    for (turnsTaken = 0; turnsTaken < MAX_TURNS; turnsTaken++)
     {
+        curPlayer = (turnsTaken % 2) + 1;
         cout << endl;
         cout << "Current Board:" << endl;
         displayBoard();
         getInput(curPlayer, a, b, c, d, e, f, g, h, i);
     }
+    displayBoard();
 }
 
 void displayBoard()
 {
-    cout << " " << a << " | " << b << " | " << c << endl
-         << "---+---+---"
+    cout << endl
+         << " " << a << " | " << b << " | " << c << endl
+         << "---+---+---" << endl
          << " " << d << " | " << e << " | " << f << endl
-         << "---+---+---"
+         << "---+---+---" << endl
          << " " << g << " | " << h << " | " << i << endl
          << endl;
 }
