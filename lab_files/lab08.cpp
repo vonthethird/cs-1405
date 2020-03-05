@@ -26,6 +26,13 @@ void assignUserChar();
 
 int main()
 {
+    cout << endl;
+    cout << "----------------------------------" << endl;
+    cout << "- Welcome to tic-tac-toe! -" << endl;
+    cout << "----------------------------------" << endl
+         << endl;
+    cout << "Players will take turns choosing an unoccupied cell." << endl;
+    cout << "The first player to get 3 in a row (or column or diagonal) wins!" << endl;
     for (turnsTaken = 0; turnsTaken < MAX_TURNS; turnsTaken++)
     {
         curPlayer = (turnsTaken % 2) + 1;
