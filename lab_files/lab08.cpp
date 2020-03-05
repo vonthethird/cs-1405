@@ -20,6 +20,10 @@ bool hasWinner(bool);
 // gathers the user inputs to select cell(s) on the board
 char getInput(char, char, char, char, char, char, char, char, char, char);
 
+// sub-level evaluations for getInput, just to separate it into smaller functions ;)
+void updateCell();
+void assignUserChar();
+
 int main()
 {
     for (turnsTaken = 0; turnsTaken < MAX_TURNS; turnsTaken++)
@@ -83,15 +87,13 @@ char getInput(char, char, char, char, char, char, char, char, char, char)
 {
     cout << "Player " << curPlayer << ", which cell would you like to enter?" << endl;
     cin >> userCell;
-    switch (curPlayer)
-    {
-    case 1:
-        userChar = 'X';
-        break;
-    case 2:
-        userChar = 'O';
-        break;
-    }
+    assignUserChar();
+    updateCell();
+    //return userCell;
+}
+
+void updateCell()
+{
     switch (userCell)
     {
     case 'a':
@@ -122,5 +124,17 @@ char getInput(char, char, char, char, char, char, char, char, char, char)
         i = userChar;
         break;
     }
-    //return userCell;
+}
+
+void assignUserChar()
+{
+    switch (curPlayer)
+    {
+    case 1:
+        userChar = 'X';
+        break;
+    case 2:
+        userChar = 'O';
+        break;
+    }
 }
