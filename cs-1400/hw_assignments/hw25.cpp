@@ -20,7 +20,7 @@ int main()
     26. the array’s beginning memory address
     */
 
-    /*// 43.
+    // 43.
     const int NUM_EMPLOYEES = 10; // number of employees
 
     int idNums[NUM_EMPLOYEES]; // employee identification numbers
@@ -35,7 +35,7 @@ int main()
         cin >> idNums[index];
         cout << "Weekly pay rate for employee #" << (index + 1) << ": ";
         cin >> weeklyPay[index];
-    }*/
+    }
 
     // 45
     const int NUM_COUNTRIES = 3;
