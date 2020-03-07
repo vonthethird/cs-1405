@@ -62,8 +62,14 @@ int main()
     }
 
     /*
-    46. 
+    46. The loop is only executed for 23 elements, while there are 25. So the total will be incorrect.
+
+    64. F
+
+    65. T
+
+    66. F
     */
 
-   return 0;
+    return 0;
 }
