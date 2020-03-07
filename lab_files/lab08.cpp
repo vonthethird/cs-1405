@@ -51,8 +51,7 @@ int main()
         hasWinner(threeInARow);
         if (threeInARow == true)
         {
-            // kills the loop, because you can end the game before turnsTaken == MAX_TURNS by filling 3 cells in a row
-            break;
+            break; // kills the loop, because you can end the game before turnsTaken == MAX_TURNS by filling 3 cells in a row
         }
     }
 

@@ -38,7 +38,7 @@ int main()
     }
 
     // 45
-    const int NUM_COUNTRIES = 3;
+    const int NUM_COUNTRIES = 12;
 
     string countryNames[NUM_COUNTRIES];
 
@@ -57,8 +57,8 @@ int main()
     cout << "Here is the population for each country:\n";
     for (int index = 0; index < NUM_COUNTRIES; index++)
     {
-        cout << (index + 1) << countryNames;
-        cout << ": " << countryPopulation << endl;
+        cout << countryNames[index];
+        cout << " Population: " << countryPopulation[index] << endl;
     }
 
     /*
