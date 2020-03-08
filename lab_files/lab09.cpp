@@ -12,19 +12,24 @@ bool isPrime(int);
 
 int main()
 {
-    int inputQuant; // "Quant" meaning "Quantity," for the quantity of prime numbers
+    int primeQuant = 0, inputQuant; // "Quant" meaning "Quantity," for the quantity of prime numbers
     cout << "Hello! Please enter how many prime numbers you would like to print out (starting from 1)." << endl;
     cin >> inputQuant;
-    int primeList[inputQuant];
 
-    for (int num = 1; num <= inputQuant; num++)
+    for (int num = 0; num <= 9999999999999; num++) // num tests every number from 0 to the big 999... number, until the amount of listed prime numbers matches the value of inputQuant
     {
         isPrime(num);
         if (checkIfPrime == true)
         {
             cout << num << endl;
+            primeQuant++; // tracks how many prime numbers get listed
+        }
+        if (primeQuant == inputQuant)
+        {
+            break;
         }
     }
+    //increment++;
     cout << endl
          << "Those are all of the first " << inputQuant << " prime numbers." << endl;
 
