@@ -29,17 +29,20 @@ int main()
             break;
         }
     }
-    //increment++;
+
     cout << endl
          << "Those are all of the first " << inputQuant << " prime numbers." << endl;
 
     return 0;
 }
 
-// primeQuant is the same variable as inputQuant, just named differently for the different use in the functions.
-// i.e. main() uses it as user input, isPrime() uses it as the quantity of prime numbers to know how many of them to print out.
 bool isPrime(int testNum)
 {
+    if (testNum == 2 || testNum == 3) // I can't effing figure out why the for() won't accept 2 or 3, so I put this here for now to get around it
+    {
+        checkIfPrime = true;
+        return checkIfPrime;
+    }
     for (int i = 2; i <= testNum / 2; ++i)
     {
         if (testNum % i == 0)
