@@ -7,7 +7,7 @@ int firstInt, secondInt;
 
 int main() {
     // greeting to user
-    cout << "This program will calculate the sum, difference, product, quotient, and remainder of 2 integers."
+    cout << "This program will calculate the sum, difference, product, quotient, and remainder of 2 integers.";
     // collect the user input
     cout << "Enter first integer: ";
     cin >> firstInt;
