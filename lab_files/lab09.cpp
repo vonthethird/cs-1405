@@ -1,6 +1,7 @@
 // author: Von Reid
 
 #include <iostream>
+#include <cassert>
 
 using std::cin;
 using std::cout;
@@ -8,10 +9,13 @@ using std::endl;
 
 bool checkIfPrime;
 
-bool isPrime(int);
+bool isPrime(int); // the number you pass into isPrime() is how many prime numbers you want, and isPrime() will run through every number starting with 2 until it gets the amount of prime numbers you need
+void testDriver(); // runs a bunch of tests on isPrime() to ensure that there won't be any bugs or errors (QA)
 
 int main()
 {
+    testDriver(); // I need to rewrite how isPrime() works, because it's hard to test with it being a bool function
+
     int primeQuant = 0, inputQuant; // "Quant" meaning "Quantity," for the quantity of prime numbers
     cout << "Hello! Please enter how many prime numbers you would like to print out (starting from 1)." << endl;
     cin >> inputQuant;
@@ -57,4 +61,14 @@ bool isPrime(int testNum)
     }
 
     return checkIfPrime;
+}
+
+void testDriver()
+{
+    assert(isPrime(1));
+    assert(isPrime(5));
+    assert(isPrime(10));
+    assert(isPrime(20));
+    assert(isPrime(50));
+    assert(isPrime(100));
 }
