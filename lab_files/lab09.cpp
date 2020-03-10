@@ -4,13 +4,14 @@
 #include <cassert> // used for assert()
 #include <fstream> // file stuff
 
-using std::cin; // user input
+using std::cin;  // user input
 using std::cout; // message output
 using std::endl; // my professor recommends endl over \n but I can't remember why lol
 using std::string;
-using std::ofstream; // creates and writes to files
+/////// yo remember to resort these more logically at some point, but the formatter auto-sorts them by alphabetical order for some reason *big shrug* lolol
+using std::fstream;  // combo of ofstream and ifstream: creates, reads, and writes to files——but stack overflow peeps mostly recommend only using this for only both read and right, not one or the other
 using std::ifstream; // reads from files
-using std::fstream; // combo of ofstream and ifstream: creates, reads, and writes to files——but stack overflow peeps mostly recommend only using this for only both read and right, not one or the other
+using std::ofstream; // creates and writes to files
 
 bool checkIfPrime = false, testBoi = false;
 
@@ -21,9 +22,13 @@ void bugMessage(string);             // just for the sake of making bug messages
 
 int main()
 {
+    const int MAX_SIZE = 1000; // won't go higher than that, according to assignment standards
+    int primeNums[MAX_SIZE]; // store prime numbers here
+
     // store prime numbers here
-    ofstream createPrimeFile("stored_prime_numbers.txt");
-    
+    ofstream primeFile("stored_prime_numbers.txt");
+    primeFile.close(); // nothing gets put in here yet tho
+
     // run some tests yo
     testDriver();
     if (testBoi == false) // bug report if there's a weird bug somehow *shrug*
@@ -38,10 +43,10 @@ int main()
 
         switch (newList) // determines first part of greeting by whether it's the first time the program is running or if the user is running it after listing prime numbers at least once
         {
-            case 'n':
+        case 'n':
             cout << "Hello! "; // greeting to user
             break;
-            case 'y':
+        case 'y':
             cout << endl; // extra line for clean line usage ;)
             break;
         }
@@ -49,7 +54,6 @@ int main()
         int inputQuant = 0; // "Quant" meaning "Quantity," for the quantity of prime numbers
         cin >> inputQuant;
         int userInput = inputQuant; // save this value to use it at the end of main()
-
         collectPrimeNumbers(inputQuant, true);
 
         cout << endl
@@ -83,7 +87,8 @@ bool collectPrimeNumbers(int primeQuant, bool printList)
         {
             if (printList == true)
             {
-                cout << num << endl;
+                //cout << num << endl;
+                // primeFile >> num;
             }
             primeQuant--; // tracks how many prime numbers get listed by deducting until it reaches 0
         }
