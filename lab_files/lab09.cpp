@@ -1,12 +1,14 @@
 // author: Von Reid
 
 #include <iostream>
-#include <cassert>
+#include <cassert> // used for assert()
+#include <fstream> // file stuff
 
-using std::cin;
-using std::cout;
-using std::endl;
+using std::cin; // user input
+using std::cout; // message output
+using std::endl; // my professor recommends endl over \n but I can't remember why lol
 using std::string;
+using std::ofstream; // creates files
 
 bool checkIfPrime = false, testBoi = false;
 
@@ -17,10 +19,14 @@ void bugMessage(string);             // just for the sake of making bug messages
 
 int main()
 {
-    testDriver();         // run some tests yo
+    // store prime numbers here
+    ofstream createPrimeFile("stored_prime_numbers.txt");
+    
+    // run some tests yo
+    testDriver();
     if (testBoi == false) // bug report if there's a weird bug somehow *shrug*
     {
-        bugMessage("Oof, there's a bug with testDriver()! Global var 'testBoi' returned false.");
+        bugMessage("Oof, there's a bug in testDriver()! Global var 'testBoi' returned false.");
         assert(false); // closes the program and identifies this line number (the line below the bug report, so it'll make debugging easier)
     }
 
@@ -28,11 +34,16 @@ int main()
     do                  // executes the program, then the user can choose to either make a new list of prime numbers or exit the program with newList value
     {
 
-        if (newList == 'n') // greeting to user
+        switch (newList) // determines first part of greeting by whether it's the first time the program is running or if the user is running it after listing prime numbers at least once
         {
-            cout << "Hello! ";
+            case 'n':
+            cout << "Hello! "; // greeting to user
+            break;
+            case 'y':
+            cout << endl; // extra line for clean line usage ;)
+            break;
         }
-        cout << "Please enter how many prime numbers you would like to print out (starting from 2)." << endl;
+        cout << "Please enter how many prime numbers you would like to print out (anything from 0 to 10000)." << endl;
         int inputQuant = 0; // "Quant" meaning "Quantity," for the quantity of prime numbers
         cin >> inputQuant;
         int userInput = inputQuant; // save this value to use it at the end of main()
