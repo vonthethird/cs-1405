@@ -19,15 +19,10 @@ bool isPrime(int);                   // the number you pass into isPrime() is ho
 bool collectPrimeNumbers(int, bool); // collects the amount of prime numbers you tell it to, and prints them out if it's not used for a test
 bool testDriver();                   // runs a bunch of tests on isPrime() to ensure that there won't be any bugs or errors (QA)
 void bugMessage(string);             // just for the sake of making bug messages easier to flag
+void testFile(bool);                     // optional saved test file for test results, currently flagged off
 
 int main()
 {
-    const int MAX_SIZE = 1000; // won't go higher than that, according to assignment standards
-    int primeNums[MAX_SIZE]; // store prime numbers here
-
-    // store prime numbers here
-    ofstream primeFile("stored_prime_numbers.txt");
-    primeFile.close(); // nothing gets put in here yet tho
 
     // run some tests yo
     testDriver();
@@ -78,9 +73,14 @@ int main()
 
 bool collectPrimeNumbers(int primeQuant, bool printList)
 {
-    const long int closeEnoughToInfinity = 9999999999999;
+    const int MAX_SIZE = 1000; // won't go higher than that, according to assignment standards
+    int primeNums[MAX_SIZE];   // store prime numbers here
 
-    for (int num = 2; num <= closeEnoughToInfinity; num++) // num tests every number from 0 to the prettyMuchToInfinity constant var——until the amount of listed prime numbers matches the value of inputQuant
+    // store prime numbers here
+    ofstream primeFile("stored_prime_numbers.txt");
+    primeFile.close(); // nothing gets put in here yet tho
+
+    for (int num = 2; num <= MAX_SIZE; num++) // num tests every number from 0 to the MAX_SIZE constant var——until the amount of listed prime numbers matches the value of inputQuant
     {
         isPrime(num);
         if (checkIfPrime == true)
@@ -88,7 +88,10 @@ bool collectPrimeNumbers(int primeQuant, bool printList)
             if (printList == true)
             {
                 //cout << num << endl;
-                // primeFile >> num;
+                fstream primeFile;
+                //primeFile.open("stored_prime_numbers.txt");
+                primeFile >> num;
+                primeFile.close;
             }
             primeQuant--; // tracks how many prime numbers get listed by deducting until it reaches 0
         }
@@ -131,6 +134,8 @@ bool isPrime(int testNum)
 
 bool testDriver()
 {
+    testFile(false); // If I want to save a test file to check the results, I can change the bool *dank extra test code file* #justcuzican
+
     bool passTest = true;
 
     // tests every prime number up until 6661 (the 859th prime number, when you count 2 as the 1st)
@@ -147,7 +152,17 @@ bool testDriver()
 void bugMessage(string message)
 {
     cout << "Bug Report: " << message << endl
-         << "If you are a user: contact Von, message him and paste this bug report in the message so he can fix this." << endl
+         << "If you are a user: message me (Von) and paste this bug report in the message so I can fix this." << endl
          << "Here's a failed assert() to direct Von to the line of code for this bug:" << endl
          << "(this will be the line of code BELOW the bug)" << endl;
+}
+
+void testFile(bool saveTestFile)
+{
+    if (saveTestFile == true)
+    {
+        string fileName = "test_driver.txt";
+        fstream testFile(fileName, fstream::in);
+        
+    }
 }
