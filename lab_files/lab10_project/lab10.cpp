@@ -1,8 +1,10 @@
 // author: Von Reid, Ronald Hunt
 
 #include <iostream>
-#include <fstream> // used for file stuff
-#include <cassert> // used for assert()
+#include <fstream>         // used for file stuff
+#include <cassert>         // used for assert()
+#include <string.h>
+#define sendl endl << endl // creats a 'super endl' (pretty much) const string var for me to reduce redundant endl usage
 
 using std::cin;  // user input
 using std::cout; // message output
@@ -13,8 +15,15 @@ using std::string;
 using std::ifstream; // reads from files
 using std::ofstream; // creates and writes to files
 
+// global cosnt variables
+const unsigned short int globalArraySub = 2; // recurring subscript in the arrays dealt with in this program
+
+// global variables
+char globalArray[globalArraySub] = {'a', 'b'};
+
 // main functions
-char swap(char); // takes in two characters (by reference) and exchanges the contents of the two arguments.
+char copy(int *, int *, int); // turns one array into another with recursion, rather than using redundant loops to do it; VERY convenient yo
+char swap(char[]);            // takes in two characters (by reference) and exchanges the contents of the two arguments.
 
 // QA functions
 void testDriver(); // for running tests
@@ -29,16 +38,52 @@ int main()
     /*
         *FIRST I NEED TO GET PERMANENT DEFAULT VALUES FOR iZero AND iOne*
     */
-    char mainArray[2] = {iZero, iOne};
+    char mainArray[globalArraySub] = {iZero, iOne};
+    swap(mainArray);
 
     return 0; // close program
 }
 
 void testDriver()
 {
-    assert(3 + 5 == 8); // dumb stupid assert requirement for question 2 :P
-    cout << "All tests passed." << endl
-         << endl; // again, dumb question 2
+    // dumb lab questions; pay no attention
+    assert(3 + 5 == 8);                   // dumb stupid assert requirement for question 2 :P
+    cout << "All tests passed." << sendl; // again, dumb question 2
+
+    // reset globalArray to default value
+    globalArray[0] = 'a';
+    globalArray[1] = 'b';
+
+    // real tests
+    char testChar[globalArraySub] = {'a', 'b'};
+    //assert(swap(testChar) == globalArray) // not working yet lol
 }
 
-char swap(char charArray)
+char swap(char charArray[])
+{
+    // create the swapped array
+    char charSwapArray[2] = {charArray[1], charArray[0]};
+
+    // create some consts;
+    char i1 = charArray[0];
+    char i2 = charArray[1];
+
+    const char indexOne = i1;
+    const char indexTwo = i2;
+
+
+    // reset the globalArray for this function
+    //1st try -- fail      globalArray = charSwapArray;
+    //2nd try -- fail      copy(globalArray[0], globalArray[1], 2); // oof won't work lol
+    memcpy(globalArray, charArray, globalArraySub);
+}
+
+// array copy shortcut; VERY CONVENIENT——copies one array into another
+char copy(int *a, int *b, int b_size)
+{
+    const char returnChar = 'a';
+
+    if (b_size == 0) return returnChar;
+    *a = *b;
+    copy(++a, ++b, b_size - 1);
+}
