@@ -15,5 +15,4 @@ using std::ofstream; // creates and writes to files
 int main()
 {
     // main() stuff
-    cout << 10;
 }
