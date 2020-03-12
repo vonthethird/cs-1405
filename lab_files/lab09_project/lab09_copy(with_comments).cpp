@@ -202,24 +202,32 @@ void readMainFile(string mainFileName, const unsigned short int maxNum)
             break; // just cuz we only need 5 slots in the main array, ya know?
         }
     }
-    mainPrimeFile.close();
+    mainPrimeFile.close(); ////
 
-    if (mainPrimeFile.is_open())
+    /*for (int index = 0; index < maxNum; i++)
+        {
+            primeFile << primeArray[index]; // keep printing the array numbers from the ifstream mainPrimeFile
+        }*/
+
+    //cout << line;
+    // if (mainPrimeFile.is_open())
+    // {
+    //string mainArray[maxNum];
+    //unsigned int mainArray[maxNum];
+    for (slot = 0; slot < maxNum; slot++)
+    {
+        //mainPrimeFile >> mainArray[slot];
+        cout << mainArrayStr[slot] << endl;
+    }
+
+    // mainPrimeFile.close(); // close the file
+    // }
+    /*else
     {
         bugMessage("File-opening malfunction; check readMainFile()");
         mainPrimeFile.close(); // attempt to close
         assert(false);
-    }
-    else
-    {
-        // string mainArray[maxNum];
-        // unsigned int mainArray[maxNum];
-        for (slot = 0; slot < maxNum; slot++)
-        {
-            // mainPrimeFile >> mainArray[slot];
-            cout << mainArrayStr[slot] << endl;
-        }
-    }
+    }*/
 }
 
 bool testDriver()
