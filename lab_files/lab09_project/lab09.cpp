@@ -9,36 +9,51 @@
     I'm almost done guys lol just give me a lil bit     yeeeet
 */
 
+/*
+use this eventually tho boi
+
+if (std::string(typeid(input_variable).name()) == typeid(chosen_type).name())
+ {
+      // input_variable is of type chosen_type
+ }
+*/
+
 #include <iostream>
-#include <sstream>
+#include <fstream> // used for file stuff
 #include <cassert> // used for assert()
-#include <fstream> // file stuff
 
 using std::cin;  // user input
 using std::cout; // message output
 using std::endl; // my professor recommends endl over \n but I can't remember why lol
 using std::string;
 /////// yo remember to resort these more logically at some point, but the formatter auto-sorts them by alphabetical order for some reason *big shrug* lolol
-using std::fstream;  // combo of ofstream and ifstream: creates, reads, and writes to files——but stack overflow peeps mostly recommend only using this for only both read and right, not one or the other
+//using std::fstream;  // combo of ofstream and ifstream: creates, reads, and writes to files——but stack overflow peeps mostly recommend only using this for only both read and right, not one or the other
 using std::ifstream; // reads from files
 using std::ofstream; // creates and writes to files
 
-bool checkIfPrime = false, testBoi = false;
+// global const variables -- NEVER CHANGE THESE
+const bool assertFalse = false;            // only for a constant static value to stick in my false assertion flags
 const unsigned short int MAX_SIZE = 10000; // won't go higher than that, according to assignment standards
-unsigned int primeArray[MAX_SIZE];         // store prime numbers here
+
+// global variables for return statements
+// checkIfPrime gets passed from isPrime() to collectPrimeNumbers(), defaults globally as false unless isPrime() switches it to true
+bool checkIfPrime = false;
+bool testsPassed = false;          // testsPassed defaults at false, but switches to true when/if the initial testDrive() test in main() returns true to successfully/securely/solidly indicate passed tests
+unsigned int primeArray[MAX_SIZE]; // store prime numbers here
 
 // prime number handling (algorithm) functions
-bool isPrime(int);                                             // the number you pass into isPrime() is how many prime numbers you want, and isPrime() will run through every number starting with 2 until it gets the amount of prime numbers you need
-bool collectPrimeNumbers(int, bool, const unsigned short int); // collects the amount of prime numbers you tell it to, and prints them out if it's not used for a test
+bool collectPrimeNumbers(bool, unsigned short int, const unsigned short int); // collects the amount of prime numbers you tell it to, and prints them out if it's not used for a test
+bool isPrime(int);                                                            // the number you pass into isPrime() is how many prime numbers you want, and isPrime() will run through every number starting with 2 until it gets the amount of prime numbers you need
 
 // file functions
+void createFile(string);                                // can create any file, passes in the file name and does it (simply for refactoring and to break it up into a smaller function)
 void storeToMainFile(string, const unsigned short int); // store main() prime numbers here
 void readMainFile(string, const unsigned short int);    // reads and prints prime numbers from the main() .txt file
-void testFile(bool);                                    // optional saved test file for test results, currently flagged off
 void fileBuffer(string);                                // buffer the file to make sure to get rid of old data
 
 // QA functions
 bool testDriver();       // runs a bunch of tests on isPrime() to ensure that there won't be any bugs or errors (QA)
+void testFile(bool);     // optional saved test file for test results, currently flagged off
 void bugMessage(string); // just for the sake of making bug messages easier to flag
 
 int main()
@@ -46,11 +61,12 @@ int main()
 
     // run some tests yo
     /*testDriver();
-    if (testBoi == false) // bug report if there's a weird bug somehow *shrug*
+    if (testsPassed == false) // bug report if there's a weird bug somehow *shrug*
     {
-        bugMessage("Oof, there's a bug in testDriver()! Global var 'testBoi' returned false.");
-        assert(false); // closes the program and identifies this line number (the line below the bug report, so it'll make debugging easier)
+        bugMessage("Oof, there's a bug in testDriver()! Global var 'testsPassed' returned false.");
+        assert(assertFalse); // closes the program and identifies this line number (the line below the bug report, so it'll make debugging easier)
     }*/
+    testsPassed = true; // TEMPORARILY here but will delete after I get tests working again
 
     char newList = 'n'; // gives newList a default value at first to avoid (unlikely but potential) weird lacking-initialized-value bugs
     do                  // executes the program, then the user can choose to either make a new list of prime numbers or exit the program with newList value
@@ -74,7 +90,8 @@ int main()
             cin >> inputQuant;
         }
         const unsigned short int userInput = inputQuant; // save this value to use it at the end of main()
-        collectPrimeNumbers(inputQuant, true, userInput);
+        // the below function should always return true in main(), so assert() is a safety blanket
+        assert(collectPrimeNumbers(testsPassed, inputQuant, userInput)); // by this point, the testsPassed value SHOULD be true, and I will always have it set to true by this line
 
         cout << endl
              << "Those are all of the first " << userInput << " positive sequential prime numbers greater than 0." << endl;
@@ -96,22 +113,33 @@ int main()
     return 0;
 }
 
-bool collectPrimeNumbers(int primeQuant, bool ismainFile, const unsigned short int constPrimeQuant)
+bool collectPrimeNumbers(bool isMainFile, unsigned short int primeQuant, const unsigned short int constPrimeQuant)
 {
     unsigned short int primeArrayIndex = 0; // knows where to store the prime number in the text file
 
-    for (unsigned short int num = 2; num <= MAX_SIZE; num++) // num tests every number from 0 to the MAX_SIZE constant var——until the amount of listed prime numbers matches the value of inputQuant
+    for (unsigned short int testForPrime = 2; testForPrime <= MAX_SIZE; testForPrime++) // testForPrime tests every number from 0 to the MAX_SIZE constant var——until the amount of listed prime numbers matches the value of inputQuant
     {
-        isPrime(num);
+        isPrime(testForPrime);
         if (checkIfPrime == true)
         {
-            //primeArray[primeArrayIndex].push_back(num);
-            primeArray[primeArrayIndex] = num;
+            //primeArray[primeArrayIndex].push_back(testForPrime);
+            primeArray[primeArrayIndex] = testForPrime;
 
             primeArrayIndex++; // moves on to the next prime number slot in the array
             primeQuant--;      // tracks how many prime numbers get listed by deducting until it reaches 0
         }
-        if (primeQuant == 0)
+        if (primeArrayIndex > constPrimeQuant) // bug catcher flag
+        {
+            bugMessage("caught error in collectPrimeNumbers() with primeArrayIndex value becoming greater than constPrimeQuant");
+            assert(assertFalse);
+            break;
+        }
+        if (primeQuant < 0 || ((primeQuant > constPrimeQuant) && constPrimeQuant != 0)) // will trigger a bug after breaking the for() loop
+        {
+            // in the rare case of the for() loop going on longer than expected, I'm cutting off the primeQuant-- decremental loopage at < 0 to break the loop lol
+            break;
+        }
+        else if (primeQuant == 0)
         {
             // stops running through every number less than closeToInfinity and moves on to the end of isPrime()
             break;
@@ -120,40 +148,40 @@ bool collectPrimeNumbers(int primeQuant, bool ismainFile, const unsigned short i
     if (primeQuant != 0) // triggers bug report in case primeQuant doesn't reach 0 somehow
     {
         bugMessage("error with primeQuant not reducing to 0 in collectPrimeNumbers()");
-        assert(false); // closes the program and identifies this line number (the line below the bug report, so it'll make debugging easier)
+        cout << "primeQuant value: " << primeQuant << endl;
+        assert(assertFalse); // closes the program and identifies this line number (the line below the bug report, so it'll make debugging easier)
     }
-
-    if (ismainFile == true)
+    if (isMainFile == true)
     {
-        string primeFileName = "lab_files/lab09_project/prime_numbers.txt";
-
+        string mainFileName = "lab_files/lab09_project/prime_numbers.txt";
+        // create the file first
+        createFile(mainFileName);
         // stores the array numbers to the main() .txt file
-        storeToMainFile(primeFileName, constPrimeQuant);
+        storeToMainFile(mainFileName, constPrimeQuant);
         // prints file to display the main() prime numbers
-        readMainFile(primeFileName, constPrimeQuant);
+        readMainFile(mainFileName, constPrimeQuant);
+        return isMainFile;
     }
-    else // for tests only
+    else // I can change the isMainFile bool in collectPrimeNumbers to save a test file if I want to view the test results in a .txt *dank extra test code file* #justcuzican
     {
-        // If I want to save a test file to check the test results, I can change the mainFile bool *dank extra test code file* #justcuzican
-        testFile(true);
+        testFile(assertFalse); // assertFalse is currently switching off the testFile function
+        return isMainFile;
     }
-
-    return true; // only for assertion tests in the testDriver() function, but useless for when it's used in main()
 }
 
 bool isPrime(int testNum)
 {
     checkIfPrime = true; // sets default value each time isPrime() gets used, so it will always be true unless the algorithm in the for() loop below makes it false
 
-    if (testNum == 2 || testNum == 3) // I can't effing figure out why the for() won't accept 2 or 3, so I put this here for now to get around it
+    if (testNum == 2 || 3) // I can't effing figure out why the for() won't accept 2 or 3, so I put this here for now to get around it
     {
-        return checkIfPrime;
+        return (testNum == 2 || 3); // will be true, so that's fine
     }
 
     // tests if the number is a prime number or not.
-    for (unsigned short int eachNum = 2; eachNum <= testNum / 2; ++eachNum)
+    for (unsigned short int primeTest = 2; primeTest <= testNum / 2; ++primeTest)
     {
-        if (testNum % eachNum == 0)
+        if (testNum % primeTest == 0)
         {
             checkIfPrime = false;
             break;
@@ -168,29 +196,30 @@ void storeToMainFile(string primeFileName, const unsigned short int maxInput)
     // store main() prime numbers here
 
     ofstream primeFile(primeFileName);
-    //random shit to eventually delete
-    //std::stringstream primeData;
-    //string primeData[constPrimeQuant];
-    //primeData << primeArray;
-    //cout << primeData << endl;;
-    //cout << primeArray << endl;
-    //  fileBuffer(primeFileName);  FIX THIS LATER
-    //primeData >> primeFile;
+
+    //ooooooof ignore this lol                                 fileBuffer(primeFileName);  FIX THIS LATER
+
     for (unsigned short int store = 0; store < maxInput; store++)
     {
-        //cout << primeArray[i] << endl; ////
-
-        //primeArray[i] >> primeData[i];
-        primeFile << primeArray[store] << endl;
+        // stores the array into the file for whatever maxInput is (maxInput traces back to the original inputQuant var in main() yo)
+        //primeFile << primeArray[store] << endl;
+        cout << primeArray[store] << endl;
     }
     primeFile.close();
+
+    if (primeFile.is_open())
+    {
+        bugMessage("problem associated with closing the newly-made file");
+        cout << "File name: " << primeFileName << endl;
+        assert(assertFalse);
+    }
 }
 
-void readMainFile(string mainFileName, const unsigned short int maxNum)
+void readMainFile(string readFileName, const unsigned short int maxNum)
 {
     string line, mainArrayStr[maxNum];
     ifstream mainPrimeFile;
-    mainPrimeFile.open(mainFileName);
+    mainPrimeFile.open(readFileName);
     // Output the prime numbers from the file
     unsigned short int slot = 0;
     while (getline(mainPrimeFile, line))
@@ -204,19 +233,16 @@ void readMainFile(string mainFileName, const unsigned short int maxNum)
     }
     mainPrimeFile.close();
 
-    if (mainPrimeFile.is_open())
+    if (mainPrimeFile.is_open()) // bug catcher flag
     {
         bugMessage("File-opening malfunction; check readMainFile()");
         mainPrimeFile.close(); // attempt to close
-        assert(false);
+        assert(assertFalse);
     }
-    else
+    else // print it out tho
     {
-        // string mainArray[maxNum];
-        // unsigned int mainArray[maxNum];
         for (slot = 0; slot < maxNum; slot++)
         {
-            // mainPrimeFile >> mainArray[slot];
             cout << mainArrayStr[slot] << endl;
         }
     }
@@ -224,17 +250,23 @@ void readMainFile(string mainFileName, const unsigned short int maxNum)
 
 bool testDriver()
 {
-    bool passTest = true;
+    const bool passTest = true;
     const unsigned short int testNum = 859; // 6661 is the 859th prime number
-    // tests every prime number up until 6661 (the 859th prime number, when you count 2 as the 1st)
-    assert(collectPrimeNumbers(859, false, testNum) == passTest);
 
-    /* testBoi ensures that testDriver() was executed to the end with no bugs.
+    /*
+    collectPrimeNumbers() passed values explained:
+        [assertFalse]used static false bool var assertFalse as a way of passing (isMainFile = false) into collectPrimeNumbers(), which actually makes sense cuz isMainFile determines if it should print a text file for these prime nums.
+        [testNum]tests every prime number up until 6661 (the 859th prime number, when you count 2 as the 1st)
+        [testNum]passes testNum in still as a const int to keep track of the 859
+    */
+    assert(collectPrimeNumbers(assertFalse, testNum, testNum) != passTest); // collectPrimeNumbers() should return false, so it'll assert as true
+
+    /* testsPassed ensures that testDriver() was executed to the end with no bugs.
        Pretty unnecessary, because the assert() stuff above will end the program and return an error if any of the assertions fail.
-       But testBoi adds extra, extremely-solid QA to the program, so sue me. */
-    testBoi = true;
+       But testsPassed adds extra, extremely-solid QA to the program, so sue me. */
+    testsPassed = true;
 
-    return testBoi;
+    return testsPassed;
 }
 
 void testFile(bool saveTestFile)
@@ -242,9 +274,9 @@ void testFile(bool saveTestFile)
     if (saveTestFile == true)
     {
         string testFileName = "lab_files/lab09_project/test_driver.txt";
+        createFile(testFileName);
         ofstream testFile(testFileName);
-        fileBuffer(testFileName);
-        std::stringstream testData;
+        //////fileBuffer(testFileName);
         testFile << primeArray;
         testFile.close();
     }
@@ -264,4 +296,16 @@ void fileBuffer(string bufFileName)
     char buf[10241];
     bufFile.rdbuf()->pubsetbuf(buf, sizeof buf);
     //bufFile.close(); // close buffed file to keep it clean yo
+}
+
+void createFile(string createFileName)
+{
+    ofstream newFile(createFileName);
+    newFile.close();
+    if (newFile.is_open())
+    {
+        bugMessage("problem associated with closing the newly-made file");
+        cout << "File name: " << createFileName << endl;
+        assert(assertFalse);
+    }
 }
