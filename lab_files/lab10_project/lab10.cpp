@@ -16,16 +16,16 @@ using std::ifstream; // reads from files
 using std::ofstream; // creates and writes to files
 
 // global cosnt variables
-const unsigned short int globalArraySubscr = 2; // recurring subscript in the arrays dealt with in this program
-const char globalConstArray[globalArraySubscr] = {'a', 'b'};
+const unsigned short int globalConstArraySubscr = 2; // recurring subscript in the arrays dealt with in this program
+const char globalConstArray[globalConstArraySubscr] = {'a', 'b'};
 
 // global variables
-char globalArray[globalArraySubscr];
+char globalArray[globalConstArraySubscr];
 
 // main functions
 char copy(int *, int *, int); // turns one array into another with recursion, rather than using redundant loops to do it; VERY convenient yo
 void swap(char[]);            // takes in two characters (by reference) and exchanges the contents of the two arguments.
-void reverse(char[]);         // takes in a character array and a size, n, and then reverses the first n characters of the array
+void reverse(char[], int);    // takes in a character array and a size, n, and then reverses the first n characters of the array
 
 // file functions
 void saveFile(string, char, int); // takes file, writes char array values until int size value gets reached, then saves to new file
@@ -33,6 +33,7 @@ void loadFile(string, char, int); // takes file, reads until end of file is reac
 
 // QA functions
 void testDriver(); // for running tests
+void reverseTests(int, int, char[]);
 
 int main()
 {
@@ -44,7 +45,7 @@ int main()
     /*
         *FIRST I NEED TO GET PERMANENT DEFAULT VALUES FOR iZero AND iOne*
     */
-    char mainArray[globalArraySubscr] = {iZero, iOne};
+    char mainArray[globalConstArraySubscr] = {iZero, iOne};
 
     // set globalArray values to the same as mainArray[]
     memcpy(globalArray, mainArray, sizeof((mainArray)));
@@ -53,6 +54,10 @@ int main()
     //  swap mainArray values and spit them into globalArray values
     swap(mainArray);
     assert(globalArray[0] == mainArray[1] && globalArray[1] == mainArray[0]); // test the swapped values with the original values
+
+    // reverse mainArray values and spit them into globalArray values
+    reverse(mainArray, globalConstArraySubscr);
+    assert(globalArray[0] == mainArray[1]);
 
     // globalArray will have the mainArray values
     if ((globalArray[0] == iOne && globalArray[1] == iZero) || (mainArray[0] == iZero && mainArray[1] == iOne))
@@ -93,9 +98,19 @@ void swap(char charArray[])
     assert(globalArray[1] == charArray[0]);
 }
 
-void reverse(char charArray[])
+void reverse(char charArray[], int n)
 {
-    // reverse() stuff
+    int i = 0, decrement = n - 1; // decrement will count down to opposing cells
+    while (i <= n)
+    {
+        globalArray[i] = charArray[decrement];
+        decrement--;
+        i++;
+        if (i == n)
+        {
+            break;
+        }
+    }
 }
 
 void saveFile(string fileName, char, int)
@@ -118,9 +133,62 @@ void testDriver()
     memcpy(globalArray, globalConstArray, sizeof((globalConstArray)));
 
     // swap() test
-    char testArray[globalArraySubscr] = {'a', 'b'};
+    char testArray[globalConstArraySubscr] = {'a', 'b'};
     swap(testArray);
     // now globalArray will have testArray's swapped values, so these assertions should be true
     assert(globalArray[0] == testArray[1]);
     assert(globalArray[1] == testArray[0]);
+
+    // reset globalArray to clean new value
+    memcpy(globalArray, globalConstArray, sizeof((globalConstArray)));
+
+    short unsigned int t, t2, i = 0;
+
+    // 3 different tests on reverse()
+    while (i < 3)
+    {
+        if (i == 0)
+        {
+            t = 3;
+            t2 = t - 1;
+            char reverseArray[t] = {'a', 'b', 'c'};
+            reverse(reverseArray, t);
+            reverseTests(t, t2, reverseArray);
+        }
+        else if (i == 1)
+        {
+            t = 4;
+            t2 = t - 1;
+            char reverseArray[t] = {'a', 'b', 'c', 'd'};
+            reverse(reverseArray, t);
+            reverseTests(t, t2, reverseArray);
+        }
+        else if (i == 2)
+        {
+            t = 10;
+            t2 = t - 1;
+            char reverseArray[t] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j'};
+            reverse(reverseArray, t);
+            reverseTests(t, t2, reverseArray);
+        }
+        else
+        {
+            cout << "oof, reverse() testing in testDriver failed" << endl;
+            assert(false);
+        }
+        i++;
+    }
+}
+
+void reverseTests(int maxNum, int decrement, char reverseTestArray[])
+{
+    for (int index = 0; index < maxNum; index++)
+    {
+        assert(reverseTestArray[index] == globalArray[decrement]);
+        decrement--;
+        if (decrement < 0)
+        {
+            break;
+        }
+    }
 }
