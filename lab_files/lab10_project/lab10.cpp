@@ -17,9 +17,10 @@ using std::ofstream; // creates and writes to files
 
 // global cosnt variables
 const unsigned short int globalArraySubscr = 2; // recurring subscript in the arrays dealt with in this program
+const char globalConstArray[globalArraySubscr] = {'a', 'b'};
 
 // global variables
-char globalArray[globalArraySubscr] = {'a', 'b'};
+char globalArray[globalArraySubscr];
 
 // main functions
 char copy(int *, int *, int); // turns one array into another with recursion, rather than using redundant loops to do it; VERY convenient yo
@@ -36,7 +37,7 @@ void testDriver(); // for running tests
 int main()
 {
     // run tests on some stuff; incomplete for now
-    //testDriver();
+    testDriver();
 
     // index char values for the char array below
     char iZero = 'y', iOne = 'z';
@@ -45,24 +46,24 @@ int main()
     */
     char mainArray[globalArraySubscr] = {iZero, iOne};
 
-    // reset globalArray values
-    globalArray[0] = iZero;
-    globalArray[1] = iOne;
+    // set globalArray values to the same as mainArray[]
+    memcpy(globalArray, mainArray, sizeof((mainArray)));
+    assert(globalArray[0] == mainArray[0] && globalArray[1] == mainArray[1]); // test the same values with each other
 
     //  swap mainArray values and spit them into globalArray values
     swap(mainArray);
-    // assign new global values to local main values
-    mainArray[0] = globalArray[0];
-    mainArray[1] = globalArray[1];
+    assert(globalArray[0] == mainArray[1] && globalArray[1] == mainArray[0]); // test the swapped values with the original values
 
-    if (mainArray[0] == iOne & mainArray[1] == iZero)
+    // globalArray will have the mainArray values
+    if ((globalArray[0] == iOne && globalArray[1] == iZero) || (mainArray[0] == iZero && mainArray[1] == iOne))
     {
         cout << "mainArray has been successfully swapped." << endl;
-        cout << mainArray[0] << endl;
-        cout << mainArray[1] << endl;
+        cout << globalArray[0] << endl;
+        cout << globalArray[1] << endl;
     }
     else
     {
+        cout << "**mainArray has NOT been successfully swapped.**" << endl;
         assert(false); // flag for bug
     }
 
@@ -82,8 +83,6 @@ void swap(char charArray[])
     const char indexTwo = i2;
 
     // reset the globalArray for this function
-    //1st try -- fail      globalArray = charSwapArray;
-    //2nd try -- fail      copy(globalArray[0], globalArray[1], 2); // oof won't work lol
     memcpy(globalArray, charSwapArray, sizeof((charSwapArray)));
 
     // assertions to ensure that memcpy() successfully made globalArray become charArray
@@ -112,27 +111,16 @@ void loadFile(string fileName, char, int)
 void testDriver()
 {
     // dumb lab questions; pay no attention
-    assert(3 + 5 == 8);                   // dumb stupid assert requirement for question 2 :P
-    cout << "All tests passed." << sendl; // again, dumb question 2
+    //assert(3 + 5 == 8);                   // dumb stupid assert requirement for question 2 :P
+    //cout << "All tests passed." << sendl; // again, dumb question 2
 
-    // reset globalArray to default value
-    globalArray[0] = 'a';
-    globalArray[1] = 'b';
+    // reset globalArray to clean new value
+    memcpy(globalArray, globalConstArray, sizeof((globalConstArray)));
 
-    // real tests
-    char testChar[globalArraySubscr] = {'a', 'b'};
-    //assert(swap(testChar) == globalArray) // not working yet lol
+    // swap() test
+    char testArray[globalArraySubscr] = {'a', 'b'};
+    swap(testArray);
+    // now globalArray will have testArray's swapped values, so these assertions should be true
+    assert(globalArray[0] == testArray[1]);
+    assert(globalArray[1] == testArray[0]);
 }
-
-/*//lol I might actually kill this function *shrug*
-// array copy shortcut; VERY CONVENIENT——copies one array into another
-char copy(int *a, int *b, int b_size)
-{
-    const char returnChar = 'a';
-
-    if (b_size == 0)
-        return returnChar;
-    *a = *b;
-    copy(++a, ++b, b_size - 1);
-}
-*/
