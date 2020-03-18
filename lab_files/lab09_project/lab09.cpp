@@ -153,7 +153,7 @@ bool collectPrimeNumbers(bool isMainFile, unsigned short int primeQuant, const u
     }
     if (isMainFile == true)
     {
-        string mainFileName = "lab_files/lab09_project/prime_numbers.txt";
+        string mainFileName = "prime_numbers.txt";
         // create the file first
         createFile(mainFileName);
         // stores the array numbers to the main() .txt file
@@ -273,7 +273,7 @@ void testFile(bool saveTestFile)
 {
     if (saveTestFile == true)
     {
-        string testFileName = "lab_files/lab09_project/test_driver.txt";
+        string testFileName = "test_driver.txt";
         createFile(testFileName);
         ofstream testFile(testFileName);
         //////fileBuffer(testFileName);

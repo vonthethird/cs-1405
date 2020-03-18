@@ -1,0 +1,23 @@
+author: Von Reid
+
+1. it uses a loop to step through an array starting from the list element.
+
+2. 10000
+
+3. n/2
+
+4. 1 time
+
+5. 10 comparisons
+
+8. liniar
+
+9. binary
+
+10. linear
+
+11. binary
+
+16. T
+
+17. F, it would go through each number so the max is N
