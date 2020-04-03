@@ -1,5 +1,5 @@
 // author: Von Reid
-// this is for the H.W. #25 assignment in class
+// this is for the H.W. #25 assignment in CS-1400
 #include <iostream>
 using std::cin;
 using std::cout;
