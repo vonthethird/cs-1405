@@ -1,4 +1,4 @@
-// author: Von Reid, Ronald Hunt
+// author: Von Reid
 
 #include <iostream>
 #include <fstream>         // used for file stuff
