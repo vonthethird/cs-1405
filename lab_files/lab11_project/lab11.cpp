@@ -25,14 +25,17 @@ int binaryFind(const vector<string> &strs, const string &str)
 {
     int index = 0;
     string strValue;
-    do {
-        strValue = strs[index];
-        index++;
-    } while (strValue == string);
-    int maxVecSize = --index;
-    for (index = 0, index < maxVecSize; index++)
+    //do {
+    //    strValue = strs[index];
+    //    index++;
+    //} while (strValue == string);
+    //int maxIndex = --index;
+    int maxIndex = strs.size();
+    for (index = 0, index < maxIndex; index++;)
     {
         strValue = strs[index];
+        std::cout << strValue << std::endl;
+        std::cout << strs[index] << std::endl;
         if (strValue == str)
         {
             return index;
